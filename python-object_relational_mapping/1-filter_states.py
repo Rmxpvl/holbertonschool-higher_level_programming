@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all states from a MySQL database."""
+"""Lists all states with name starting with N."""
 
 import MySQLdb
 from sys import argv
