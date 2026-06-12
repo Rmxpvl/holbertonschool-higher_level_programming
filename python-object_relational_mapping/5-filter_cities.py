@@ -17,7 +17,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     query = """
-        SELECT cities.id, cities.name
+        SELECT cities.name
         FROM cities
         INNER JOIN states ON cities.state_id = states.id
         WHERE states.name = %s
@@ -26,8 +26,9 @@ if __name__ == "__main__":
 
     cursor.execute(query, (argv[4],))
 
-    for row in cursor.fetchall():
-        print(row)
+    cities = [city[0] for city in cursor.fetchall()]
+    if cities:
+        print(", ".join(cities))
 
     cursor.close()
     db.close()
