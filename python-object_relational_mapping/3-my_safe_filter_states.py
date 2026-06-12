@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     cursor = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    query = "SELECT * FROM states WHERE name = %s"
 
     cursor.execute(query, (argv[4],))
 
