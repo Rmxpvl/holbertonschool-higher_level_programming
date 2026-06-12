@@ -30,8 +30,8 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(data).encode())
 
         elif self.path == "/status":
-            self._send_response(200, "application/json")
-            self.wfile.write(json.dumps({"status": "OK"}).encode())
+            self._send_response(200)
+            self.wfile.write(b"OK")
 
         elif self.path == "/info":
             self._send_response(200, "application/json")
@@ -42,8 +42,8 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(info).encode())
 
         else:
-            self._send_response(404, "application/json")
-            self.wfile.write(json.dumps({"error": "Endpoint not found"}).encode())
+            self._send_response(404)
+            self.wfile.write(b"Endpoint not found")
 
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
