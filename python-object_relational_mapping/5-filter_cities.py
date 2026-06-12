@@ -19,9 +19,9 @@ if __name__ == "__main__":
     query = """
         SELECT cities.id, cities.name
         FROM cities
-        JOIN states ON cities.state_id = states.id
+        INNER JOIN states ON cities.state_id = states.id
         WHERE states.name = %s
-        ORDER BY cities.id ASC
+        ORDER BY cities.id
     """
 
     cursor.execute(query, (argv[4],))
