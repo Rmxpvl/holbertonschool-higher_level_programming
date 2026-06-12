@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists states matching a given name."""
+"""Lists states matching a given name safely."""
 
 import MySQLdb
 from sys import argv
@@ -16,8 +16,7 @@ if __name__ == "__main__":
 
     cursor = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = %s"
-
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
     cursor.execute(query, (argv[4],))
 
     for row in cursor.fetchall():
@@ -25,4 +24,3 @@ if __name__ == "__main__":
 
     cursor.close()
     db.close()
-
